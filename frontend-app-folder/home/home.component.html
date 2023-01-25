@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <div>
+        <div class="alert alert-success m-2" role="alert" *ngIf="hideLoginMessage">
+            You are logged in!
+          </div>
+    </div>
+
+    <div class="jumbotron ">
+        <h1 class="display-4 text-center"><strong>QA Portal</strong></h1>
+        <p class="lead text-center">Our QA Portal is a user-friendly website, where anyone can discuss their problems with ease.</p>
+        <hr class="my-4">
+        <p class="text-center text-muted">Share your questions here</p>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" routerLink="/qaportal/questions">QA Discussion</button>
+        </div>
+      </div>
+
+    
+
+</body>
+
+</html>

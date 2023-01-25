@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <ul class="navbar-nav">
+            <li><a *ngIf="userService.isUserLoggedIn()" routerLink="/home" class="nav-link">Home</a></li>
+            <li><a *ngIf="userService.isUserLoggedIn()" routerLink="/qaportal/questions" class="nav-link">QA Discussion</a></li>
+            <li><a  routerLink="/home" class="nav-link">QA Portal</a></li>
+        </ul>
+
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+                <li><a *ngIf="!userService.isUserLoggedIn()" routerLink="/login" class="nav-link">Login</a></li>
+                <li><a *ngIf="userService.isUserLoggedIn()" class="nav-link" (click) = "handleLogout()">Logout</a></li>
+        </ul>
+    </nav>
+</header>

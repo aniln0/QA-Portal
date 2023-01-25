@@ -1,0 +1,44 @@
+<div *ngIf="!isPosted">
+
+   
+
+    <div class="input-group m-3">
+        <span class="input-group-text">Title</span>
+        <input type="text" class="form-control" [(ngModel)]="question.title">
+    </div>
+
+    
+
+    <p *ngIf="invalidTitle" class="text-danger">
+        {{invalidTitle}}
+    </p>
+
+    <div class="input-group m-3">
+        <span class="input-group-text">Description</span>
+        <textarea class="form-control" aria-label="description" [(ngModel)]="question.description"></textarea>
+    </div>
+
+    <p *ngIf="invalidDescription" class="text-danger">
+        {{invalidDescription}}
+    </p>
+
+    <p *ngIf="invalidDetails" class="text-danger">
+        {{invalidDetails}}
+    </p>
+
+    <div class="text-center">
+        <button class="btn btn-success text-white text-center m-5" (click)="handlePostQuestion()">Post Question</button>
+    </div>
+
+   
+
+</div>
+
+
+<div class="alert alert-success m-3" role="alert" *ngIf="isPosted">
+    Question Posted Successfully
+</div>
+
+<div class="text-center" *ngIf="isPosted">
+    <button class="btn btn-info text-white text-center m-5" routerLink="/qaportal/questions">Back to Portal</button>
+</div>

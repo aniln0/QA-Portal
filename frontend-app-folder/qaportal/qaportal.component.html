@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+</head>
+
+<body>
+    <div class="alert alert-warning m-3" role="alert" *ngIf="!isValidResponse">
+        Session expired! Please log in again.
+    </div>
+
+    <button class="btn btn-success text-white text-center m-3" routerLink="/login"
+        *ngIf="!isValidResponse">Login</button>
+
+    <div class="jumbotron bg-light rounded border border-secondary" *ngIf="isValidResponse">
+
+        <h6 class="display-6 m-5 text-center">QA Discussion</h6>
+
+        <div class="m-5 alert alert-success" *ngIf="message">{{message}}</div>
+
+        <div class="card m-5 border-primary" *ngFor="let question of questions; let i = index">
+            <div class="card-header">
+                {{question.questionid}} - <strong>{{question.title}}</strong>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>
+                <p class="card-text">{{question.description}}</p>
+
+                <!-- [Show Answers] Button starts -->
+
+
+                
+                <button class=" btn btn-primary" type="button" data-bs-toggle="collapse" attr.data-bs-target="#id{{i}}"
+                    (click)="handleShowAnswers(question.questionid)">
+                    Show Answers
+                </button>
+                <div class="collapse" id="id{{i}}">
+                    <!--  -->
+
+                    <div class="card m-5 border-primary" *ngFor="let answer of answers; let j = index">
+                        <div class="card-header">
+                            <strong>{{answer.answerid}}</strong>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">{{answer.answer}}
+                        </div>
+                        <div class="card-footer text-muted float-end">
+                            Answered by : {{answer.username}}
+                            <p class="float-end">Answered Date : {{answer.createdate}}</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning m-3" role="alert" *ngIf="!isAnswersPosted">
+                        No Answers
+                    </div>
+
+                    <!-- post answer starts -->
+
+                    <div class="input-group m-3" *ngIf="!postAnswerSuccessful">
+                        <span class="input-group-text">Answer</span>
+                        <textarea class="form-control" aria-label="answer" [(ngModel)]="userAnswer"></textarea>
+                    </div>
+
+                    <div class="text-center" *ngIf="!postAnswerSuccessful">
+
+                        <button class="btn btn-success text-white text-center m-2"
+                            (click)="handlePostAnswer(question.questionid)">Post Answer</button>
+
+                        <p *ngIf="invalidAnswer" class="text-danger">
+                            {{invalidAnswer}}
+                        </p>
+                    </div>
+
+                    <div class="m-5 alert alert-success" *ngIf="postAnswerSuccessful">Answer Posted</div>
+
+
+
+                    <!-- post answer ends -->
+
+                    <!--  -->
+                </div>
+                <!-- [Show Answers] Button ends -->
+            </div>
+            <div class="card-footer text-muted float-end">
+                Asked by : {{question.username}}
+                <p class="float-end">Posted Date : {{question.createdate}}</p>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success text-white text-center m-3" (click)="handlePostQuestion()">Post a
+                Question</button>
+        </div>
+        <button class="btn btn-danger text-white text-center m-5" (click)="backToHomePage()">Back</button>
+    </div>
+</body>
+
+</html> 
+
+
+
+<!-- accordion example -->
+

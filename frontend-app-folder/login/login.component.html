@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+
+    <div class="card position-absolute top-50 start-50 translate-middle rounded border border-secondary text-center ">
+        <div class="card-header">
+            <h5 class="card-title">Login</h5>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Username</span>
+                <input type="text" class="form-control" placeholder="Enter Username" [(ngModel)]="username">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Password</span>
+                <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="password">
+            </div>
+            <a class="btn btn-outline-primary" (click)="handleLogin()">Login</a>
+        </div>
+        <p class="alert alert-danger p-2 m-2" *ngIf='isInvalid'>{{login_message}}</p>
+
+    </div>
+
+    <!-- not responsive -->
+    <div style="position:absolute; left:680px; top:490px;">
+        <p class="text-muted m-2">New User? Register Here</p>
+    </div>
+
+    <div style="position:absolute; left:724px; top:530px;">
+        <a class="btn btn-outline-success" routerLink="/register">Register</a>
+    </div>
+
+</body>

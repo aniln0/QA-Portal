@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register</title>
+</head>
+
+<body>
+
+  <div class="card position-absolute top-50 start-50 translate-middle rounded border border-secondary text-center " *ngIf="!showLoginButton">
+
+    <div class="card-header">
+      <h5 class="card-title">Register</h5>
+    </div>
+
+    <div class="card-body">
+
+      <div class="input-group mb-3 has-validation">
+        <span class="input-group-text">First Name</span>
+        <input type="text" class="form-control" placeholder="Ex: Vishal" [(ngModel)]="user.firstname">
+      </div>
+
+      <p *ngIf="invalid_fn_message" class="text-danger">
+        {{invalid_fn_message}}
+      </p>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Last Name</span>
+        <input type="text" class="form-control" placeholder="Ex: Agarwal" [(ngModel)]="user.lastname">
+      </div>
+
+      <p *ngIf="invalid_ln_message" class="text-danger">
+        {{invalid_ln_message}}
+      </p>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Email ID</span>
+        <input type="email" class="form-control" placeholder="Enter E-mail" [(ngModel)]="user.emailid">
+      </div>
+
+      <p *ngIf="invalid_email_message" class="text-danger">
+        {{invalid_email_message}}
+      </p>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Password</span>
+        <input type="password" class="form-control" placeholder="Enter Password" [(ngModel)]="user.password">
+      </div>
+
+      <p *ngIf="invalid_pass_message" class="text-danger">
+        {{invalid_pass_message}}
+      </p>
+
+      <a class="btn btn-outline-success" (click)="handleRegister()">Register</a>
+    </div>
+
+  </div>
+
+  <p class="alert alert-success p-2 m-2" *ngIf='showLoginButton'>Registered Successfully</p>
+
+  <div class="text-center">
+    <button type="button" class="btn btn-primary" routerLink="/login"  *ngIf='showLoginButton'>Login</button>
+</div>
+
+</body>
